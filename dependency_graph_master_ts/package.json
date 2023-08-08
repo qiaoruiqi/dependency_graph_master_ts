@@ -1,0 +1,19 @@
+{
+  "name": "dependency_graph_ts",
+  "version": "1.0.0",
+  "description": "Node Library 依赖关系分析工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peachy_rq",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.8"
+  }
+}

@@ -1,5 +1,5 @@
 const cors = require("cors");
-const rpath = require('path');
+import path from 'path';
 const { exec } = require('child_process');
 const express = require("express");
 const app = express();
@@ -15,9 +15,10 @@ interface paramProps {
 function startServer({bundleStats, bundleStatsFile, level}:paramProps) {
   const port = 3000;
   const port_ = 4000;
-  const __dirname = 'C:\\Users\\rqqiao\\Desktop\\dependency_graph_ts';
+  console.log(__dirname)
+  // const __dirname = 'C:\\Users\\rqqiao\\Desktop\\dependency\\dependency_graph_ts';
   app.use(cors());
-  app.use(express.static('C:\\Users\\rqqiao\\Desktop\\dependency_graph_ts\\build'));
+  app.use(express.static('C:\\Users\\rqqiao\\Desktop\\dependency\\dependency_graph_ts\\build'));
 
   app.get("/search", async (req:any, res:any) => {
     const param1 = req.query.param1;
@@ -33,6 +34,7 @@ function startServer({bundleStats, bundleStatsFile, level}:paramProps) {
   });
   // 打开默认浏览器并访问 React 应用
   exec(`start http://localhost:3000`);
+  
   app.get('*', (req:any, res:any) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });

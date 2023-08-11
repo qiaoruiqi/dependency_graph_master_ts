@@ -8,7 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const path = require('path');
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = __importDefault(require("path"));
 const commander = require('commander');
 const viewer = require('../lib/viewer.js');
 const program = commander
@@ -30,8 +34,8 @@ const program = commander
     .parse(process.argv);
 let [bundleStatsFile, bundleDir] = program.args;
 let { mode, open: openBrowser, title: reportTitle, level, } = program.opts();
-bundleStatsFile = path.resolve(bundleStatsFile);
-bundleStatsFile = path.join(bundleStatsFile, "package.json");
+bundleStatsFile = path_1.default.resolve(bundleStatsFile);
+bundleStatsFile = path_1.default.join(bundleStatsFile, "package.json");
 parseAndAnalyse(bundleStatsFile);
 function parseAndAnalyse(bundleStatsFile) {
     return __awaiter(this, void 0, void 0, function* () {

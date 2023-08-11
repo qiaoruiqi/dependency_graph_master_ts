@@ -8,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 const cors = require("cors");
-const rpath = require('path');
+const path_1 = __importDefault(require("path"));
 const { exec } = require('child_process');
 const express = require("express");
 const app = express();
@@ -18,9 +22,10 @@ const analyzer = require('../lib/analyze.js');
 function startServer({ bundleStats, bundleStatsFile, level }) {
     const port = 3000;
     const port_ = 4000;
-    const __dirname = 'C:\\Users\\rqqiao\\Desktop\\dependency_graph_ts';
+    console.log(__dirname);
+    // const __dirname = 'C:\\Users\\rqqiao\\Desktop\\dependency\\dependency_graph_ts';
     app.use(cors());
-    app.use(express.static('C:\\Users\\rqqiao\\Desktop\\dependency_graph_ts\\build'));
+    app.use(express.static('C:\\Users\\rqqiao\\Desktop\\dependency\\dependency_graph_ts\\build'));
     app.get("/search", (req, res) => __awaiter(this, void 0, void 0, function* () {
         const param1 = req.query.param1;
         try {
@@ -37,7 +42,7 @@ function startServer({ bundleStats, bundleStatsFile, level }) {
     // 打开默认浏览器并访问 React 应用
     exec(`start http://localhost:3000`);
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'build', 'index.html'));
+        res.sendFile(path_1.default.join(__dirname, 'build', 'index.html'));
     });
     app.listen(port, () => {
         console.log("服务器正在运行，端口：4000");
